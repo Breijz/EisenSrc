@@ -1,3 +1,6 @@
+#ifndef WORLD_H
+#define WORLD_H
+
 /*
 Copyright (C) 1996-1997 Id Software, Inc.
 
@@ -91,3 +94,5 @@ trace_t SV_Move (vec3_t start, vec3_t mins, vec3_t maxs, vec3_t end, int type, e
 
 
 edict_t	*SV_TestPlayerPosition (edict_t *ent, vec3_t origin);
+
+#endif

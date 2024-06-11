@@ -1,3 +1,6 @@
+#ifndef MENU_H
+#define MENU_H
+
 /*
 Copyright (C) 1996-1997 Id Software, Inc.
 
@@ -39,3 +42,4 @@ void M_DrawTextBox (int x, int y, int width, int lines);
 void M_Menu_Quit_f (void);
 
 
+#endif

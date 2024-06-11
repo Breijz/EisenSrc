@@ -1,3 +1,6 @@
+#ifndef QUAKEDEF_H
+#define QUAKEDEF_H
+
 /*
 Copyright (C) 1996-1997 Id Software, Inc.
 
@@ -140,3 +143,4 @@ void Host_ShutdownServer (qboolean crash);
 extern qboolean		msg_suppress_1;		// suppresses resolution and cache size console output
 										//  an fullscreen DIB focus gain/loss
 
+#endif

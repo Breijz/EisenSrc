@@ -1,3 +1,6 @@
+#ifndef COMMON_H
+#define COMMON_H
+
 /*
 Copyright (C) 1996-1997 Id Software, Inc.
 
@@ -220,3 +223,4 @@ byte	COM_BlockSequenceCheckByte (byte *base, int length, int sequence, unsigned 
 byte	COM_BlockSequenceCRCByte (byte *base, int length, int sequence);
 
 int build_number( void );
+#endif

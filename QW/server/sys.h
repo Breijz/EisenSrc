@@ -1,3 +1,6 @@
+#ifndef SYS_H
+#define SYS_H
+
 /*
 Copyright (C) 1996-1997 Id Software, Inc.
 
@@ -33,3 +36,5 @@ void Sys_Quit (void);
 double Sys_DoubleTime (void);
 char *Sys_ConsoleInput (void);
 void Sys_Init (void);
+
+#endif

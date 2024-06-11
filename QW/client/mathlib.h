@@ -1,3 +1,6 @@
+#ifndef MATHLIB_H
+#define MATHLIB_H
+
 /*
 Copyright (C) 1996-1997 Id Software, Inc.
 
@@ -89,3 +92,5 @@ void RotatePointAroundVector( vec3_t dst, const vec3_t dir, const vec3_t point, 
 	)										\
 	:										\
 		BoxOnPlaneSide( (emins), (emaxs), (p)))
+
+#endif

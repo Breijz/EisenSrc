@@ -1,3 +1,6 @@
+#ifndef WAD_H
+#define WAD_H
+
 /*
 Copyright (C) 1996-1997 Id Software, Inc.
 
@@ -73,3 +76,5 @@ void	*W_GetLumpName (char *name);
 void	*W_GetLumpNum (int num);
 
 void SwapPic (qpic_t *pic);
+
+#endif

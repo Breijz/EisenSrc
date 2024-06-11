@@ -1,3 +1,6 @@
+#ifndef SERVER_H
+#define SERVER_H
+
 /*
 Copyright (C) 1996-1997 Id Software, Inc.
 
@@ -454,3 +457,4 @@ void ClientReliableWrite_Short(client_t *cl, int c);
 void ClientReliableWrite_String(client_t *cl, char *s);
 void ClientReliableWrite_SZ(client_t *cl, void *data, int len);
 
+#endif

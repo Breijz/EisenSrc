@@ -1,3 +1,6 @@
+#ifndef BSPFILE_H
+#define BSPFILE_H
+
 /*
 Copyright (C) 1996-1997 Id Software, Inc.
 
@@ -267,5 +270,7 @@ extern	int			dsurfedges[MAX_MAP_SURFEDGES];
 void	LoadBSPFile (char *filename);
 void	WriteBSPFile (char *filename);
 void	PrintBSPFileSizes (void);
+
+#endif
 
 #endif

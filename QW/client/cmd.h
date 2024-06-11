@@ -1,3 +1,6 @@
+#ifndef CMD_H
+#define CMD_H
+
 /*
 Copyright (C) 1996-1997 Id Software, Inc.
 
@@ -105,3 +108,5 @@ void	Cmd_ForwardToServer (void);
 // so when they are typed in at the console, they will need to be forwarded.
 
 void Cmd_StuffCmds_f (void);
+
+#endif

@@ -1,3 +1,6 @@
+#ifndef VID_H
+#define VID_H
+
 /*
 Copyright (C) 1996-1997 Id Software, Inc.
 
@@ -90,3 +93,4 @@ void VID_UnlockBuffer (void);
 qboolean VID_Is8bit(void);
 #endif
 
+#endif

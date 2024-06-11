@@ -1,3 +1,6 @@
+#ifndef PMOVE_H
+#define PMOVE_H
+
 /*
 Copyright (C) 1996-1997 Id Software, Inc.
 
@@ -99,3 +102,5 @@ int PM_HullPointContents (hull_t *hull, int num, vec3_t p);
 int PM_PointContents (vec3_t point);
 qboolean PM_TestPlayerPosition (vec3_t point);
 pmtrace_t PM_PlayerMove (vec3_t start, vec3_t stop);
+
+#endif

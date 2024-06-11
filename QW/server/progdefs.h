@@ -1,3 +1,6 @@
+#ifndef PROGDEFS_H
+#define PROGDEFS_H
+
 /*
 Copyright (C) 1996-1997 Id Software, Inc.
 
@@ -157,3 +160,5 @@ typedef struct
 } entvars_t;
 
 #define PROGHEADER_CRC 54730
+
+#endif

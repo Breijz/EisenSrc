@@ -1,3 +1,6 @@
+#ifndef INPUT_H
+#define INPUT_H
+
 /*
 Copyright (C) 1996-1997 Id Software, Inc.
 
@@ -32,3 +35,4 @@ void IN_Move (usercmd_t *cmd);
 void IN_ModeChanged (void);
 // called whenever screen dimensions change
 
+#endif

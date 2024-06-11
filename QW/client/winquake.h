@@ -1,3 +1,6 @@
+#ifndef WINQUAKE_H
+#define WINQUAKE_H
+
 /*
 Copyright (C) 1996-1997 Id Software, Inc.
 
@@ -111,4 +114,6 @@ struct hostent FAR * (PASCAL FAR *pgethostbyaddr)(const char FAR * addr,
 												  int len, int type);
 int (PASCAL FAR *pgetsockname)(SOCKET s, struct sockaddr FAR *name,
 							   int FAR * namelen);
+#endif
+
 #endif

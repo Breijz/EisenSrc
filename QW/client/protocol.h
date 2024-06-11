@@ -1,3 +1,6 @@
+#ifndef PROTOCOL_H
+#define PROTOCOL_H
+
 /*
 Copyright (C) 1996-1997 Id Software, Inc.
 
@@ -280,3 +283,4 @@ typedef struct usercmd_s
 	byte	impulse;
 } usercmd_t;
 
+#endif

@@ -1,3 +1,6 @@
+#ifndef CDAUDIO_H
+#define CDAUDIO_H
+
 /*
 Copyright (C) 1996-1997 Id Software, Inc.
 
@@ -25,3 +28,5 @@ void CDAudio_Pause(void);
 void CDAudio_Resume(void);
 void CDAudio_Shutdown(void);
 void CDAudio_Update(void);
+
+#endif

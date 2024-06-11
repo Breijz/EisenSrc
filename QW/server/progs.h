@@ -1,3 +1,6 @@
+#ifndef PROGS_H
+#define PROGS_H
+
 /*
 Copyright (C) 1996-1997 Id Software, Inc.
 
@@ -145,3 +148,4 @@ extern int num_prstr;
 char *PR_GetString(int num);
 int PR_SetString(char *s);
 
+#endif

@@ -1,3 +1,6 @@
+#ifndef R_LOCAL_H
+#define R_LOCAL_H
+
 /*
 Copyright (C) 1996-1997 Id Software, Inc.
 
@@ -315,3 +318,5 @@ void R_SplitEntityOnNode2 (mnode_t *node);
 void R_MarkLights (dlight_t *light, int bit, mnode_t *node);
 
 #endif //GLQUAKE
+
+#endif // R_LOCAL

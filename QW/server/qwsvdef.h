@@ -1,3 +1,6 @@
+#ifndef QWSVDEF_H
+#define QWSVDEF_H
+
 /*
 Copyright (C) 1996-1997 Id Software, Inc.
 
@@ -93,3 +96,4 @@ void SV_Init (quakeparms_t *parms);
 void Con_Printf (char *fmt, ...);
 void Con_DPrintf (char *fmt, ...);
 
+#endif

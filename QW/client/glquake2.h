@@ -1,3 +1,6 @@
+#ifndef GLQUAKE2_H
+#define GLQUAKE2_H
+
 // disable data conversion warnings
 
 #pragma warning(disable : 4244)     // MIPS
@@ -188,3 +191,5 @@ extern	int		gl_alpha_format;
 
 void R_TranslatePlayerSkin (int playernum);
 void GL_Bind (int texnum);
+
+#endif

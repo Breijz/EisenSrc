@@ -1,3 +1,6 @@
+#ifndef CVAR_H
+#define CVAR_H
+
 /*
 Copyright (C) 1996-1997 Id Software, Inc.
 
@@ -95,3 +98,5 @@ void 	Cvar_WriteVariables (FILE *f);
 cvar_t *Cvar_FindVar (char *var_name);
 
 extern cvar_t	*cvar_vars;
+
+#endif

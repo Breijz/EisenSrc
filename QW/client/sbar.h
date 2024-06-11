@@ -1,3 +1,6 @@
+#ifndef SBAR_H
+#define SBAR_H
+
 /*
 Copyright (C) 1996-1997 Id Software, Inc.
 
@@ -37,3 +40,5 @@ void Sbar_IntermissionOverlay (void);
 // called each frame after the level has been completed
 
 void Sbar_FinaleOverlay (void);
+
+#endif

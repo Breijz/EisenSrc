@@ -1,3 +1,6 @@
+#ifndef NET_H
+#define NET_H
+
 /*
 Copyright (C) 1996-1997 Id Software, Inc.
 
@@ -110,3 +113,4 @@ void Netchan_Setup (netchan_t *chan, netadr_t adr, int qport);
 qboolean Netchan_CanPacket (netchan_t *chan);
 qboolean Netchan_CanReliable (netchan_t *chan);
 
+#endif

@@ -1,3 +1,6 @@
+#ifndef GLQUAKE_H
+#define GLQUAKE_H
+
 /*
 Copyright (C) 1996-1997 Id Software, Inc.
 
@@ -300,3 +303,4 @@ void GL_BuildLightmaps (void);
 //
 void R_NetGraph (void);
 
+#endif

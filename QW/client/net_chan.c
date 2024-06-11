@@ -24,6 +24,10 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #include "winquake.h"
 #endif
 
+#ifdef __linux__
+#include <unistd.h>
+#endif
+
 #define	PACKET_HEADER	8
 
 /*

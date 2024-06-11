@@ -578,7 +578,7 @@ void VID_Init8bitPalette(void)
 		table[i][3] = 255;
 		oldpal++;
 	}
-	gl3DfxSetPaletteEXT((GLuint *)table);
+	//gl3DfxSetPaletteEXT((GLuint *)table);
 	is8bit = true;
 }
 #endif

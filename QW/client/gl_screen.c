@@ -465,7 +465,7 @@ void SCR_DrawFPS (void)
 	static double lastframetime;
 	double t;
 	extern int fps_count;
-	static lastfps;
+	static int lastfps;
 	int x, y;
 	char st[80];
 
@@ -780,7 +780,7 @@ int MipColor(int r, int g, int b)
 }
 
 // from gl_draw.c
-byte		*draw_chars;				// 8*8 graphic characters
+extern byte		*draw_chars;				// 8*8 graphic characters
 
 void SCR_DrawCharToSnap (int num, byte *dest, int width)
 {

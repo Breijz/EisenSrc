@@ -25,19 +25,21 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #include <stdio.h>
 #include <signal.h>
 
-#include <asm/io.h>
+#include <sys/io.h>
 
 #include "vga.h"
 #include "vgakeyboard.h"
 #include "vgamouse.h"
 
 #include "quakedef.h"
-#include "GL/fxmesa.h"
+//#include "GL/fxmesa.h"
+#include <GL/glx.h>
 
 #define WARP_WIDTH              320
 #define WARP_HEIGHT             200
 
-static fxMesaContext fc = NULL;
+//static fxMesaContext fc = NULL;
+static Display fc = NULL;
 #define stringify(m) { #m, m }
 
 unsigned short	d_8to16table[256];
@@ -175,7 +177,8 @@ void VID_Shutdown(void)
 	if (!fc)
 		return;
 
-	fxMesaDestroyContext(fc);
+	//fxMesaDestroyContext(fc);
+	glXDestroyContext(fc);
 
 	if (UseKeyboard)
 		keyboard_close();
@@ -350,7 +353,8 @@ void GL_BeginRendering (int *x, int *y, int *width, int *height)
 void GL_EndRendering (void)
 {
 	glFlush();
-	fxMesaSwapBuffers();
+	glXSwapBuffers();
+	//fxMesaSwapBuffers();
 }
 
 void Init_KBD(void)
@@ -472,7 +476,7 @@ void Init_KBD(void)
 
 #define NUM_RESOLUTIONS 3
 
-static resolutions[NUM_RESOLUTIONS][3]={ 
+static int resolutions[NUM_RESOLUTIONS][3]={ 
   { 512, 384, GR_RESOLUTION_512x384 },
   { 640, 400, GR_RESOLUTION_640x400 },
   { 640, 480, GR_RESOLUTION_640x480 }
@@ -576,10 +580,10 @@ void VID_Init(unsigned char *palette)
 // interpret command-line params
 
 // set vid parameters
-	attribs[0] = FXMESA_DOUBLEBUFFER;
-	attribs[1] = FXMESA_ALPHA_SIZE;
+	attribs[0] = GLX_DOUBLEBUFFER;
+	attribs[1] = GLX_ALPHA_SIZE;
 	attribs[2] = 1;
-	attribs[3] = FXMESA_DEPTH_SIZE;
+	attribs[3] = GLX_DEPTH_SIZE;
 	attribs[4] = 1;
 	attribs[5] = FXMESA_NONE;
 
@@ -606,7 +610,8 @@ void VID_Init(unsigned char *palette)
 	if (vid.conheight < 200)
 		vid.conheight = 200;
 
-	fc = fxMesaCreateContext(0, findres(&width, &height), GR_REFRESH_75Hz, 
+	//fc = fxMesaCreateContext(0, findres(&width, &height), GR_REFRESH_75Hz, 
+	fc = glXCreateContext(0, findres(&width, &height), GR_REFRESH_75HZ,
 		attribs);
 	if (!fc)
 		Sys_Error("Unable to create 3DFX context.\n");
@@ -614,7 +619,8 @@ void VID_Init(unsigned char *palette)
 	scr_width = width;
 	scr_height = height;
 
-	fxMesaMakeCurrent(fc);
+	//fxMesaMakeCurrent(fc);
+	glXMakeCurrent(fc);
 
 	if (vid.conheight > height)
 		vid.conheight = height;

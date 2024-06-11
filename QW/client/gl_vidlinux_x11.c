@@ -24,7 +24,12 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #include <stdarg.h>
 #include <stdio.h>
 #include <signal.h>
+
+#ifdef __linux__
+#include <sys/io.h>
+#else
 #include <asm/io.h>
+#endif
 
 //#include <X11/cursorfont.h>
 #include <X11/Xlib.h>

@@ -25,7 +25,11 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #include <stdio.h>
 #include <signal.h>
 
+#ifdef __linux__
+#include <sys/io.h>
+#else
 #include <asm/io.h>
+#endif
 
 #include "vga.h"
 #include "vgakeyboard.h"

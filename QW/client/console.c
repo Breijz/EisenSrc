@@ -352,6 +352,7 @@ Handles cursor positioning, line wrapping, etc
 // FIXME: make a buffer size safe vsprintf?
 void Con_Printf (char *fmt, ...)
 {
+	return;
 	va_list		argptr;
 	char		msg[MAXPRINTMSG];
 	static qboolean	inupdate;

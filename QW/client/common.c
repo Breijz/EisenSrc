@@ -56,7 +56,7 @@ void COM_Path_f (void);
 
 qboolean		standard_quake = true, rogue, hipnotic;
 
-//char	gamedirfile[MAX_OSPATH];
+char	gamedirfile[MAX_OSPATH];
 
 // this graphic needs to be in the pak file to use registered features
 unsigned short pop[] =

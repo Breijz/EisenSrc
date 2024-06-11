@@ -68,7 +68,7 @@ typedef struct
 	int output;
 } keymap_t;
 
-viddef_t vid; // global video state
+extern viddef_t vid; // global video state
 unsigned short d_8to16table[256];
 
 int		num_shades=32;
@@ -108,8 +108,8 @@ static long X11_buffersize;
 int vid_surfcachesize;
 void *vid_surfcache;
 
-void (*vid_menudrawfn)(void);
-void (*vid_menukeyfn)(int key);
+extern void (*vid_menudrawfn)(void);
+extern void (*vid_menukeyfn)(int key);
 void VID_MenuKey (int key);
 
 static PIXEL st2d_8to16table[256];

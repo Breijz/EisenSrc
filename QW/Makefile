@@ -36,8 +36,11 @@ SERVER_DIR=$(MAINDIR)/server
 
 MESA_DIR=/usr/local/src/Mesa-3.0
 
+## !!! this should be fixed !!!
+## currently it is compiled in 32bit mode due to d_copy.s being written for 32bit systems.
+
 CC=gcc
-BASE_CFLAGS=-Wall -Dstricmp=strcasecmp -I$(CLIENT_DIR) -I$(SERVER_DIR)
+BASE_CFLAGS=-Wall -Dstricmp=strcasecmp -m32 -I$(CLIENT_DIR) -I$(SERVER_DIR)
 DEBUG_CFLAGS=$(BASE_CFLAGS) -g
 ifeq ($(ARCH),axp)
 RELEASE_CFLAGS=$(BASE_CFLAGS) -ffast-math -funroll-loops \
@@ -71,7 +74,8 @@ ifeq ($(ARCH),axp)
 TARGETS=$(BUILDDIR)/qwsv 
 #$(BUILDDIR)/qwcl.x11
 else
-TARGETS=$(BUILDDIR)/qwsv $(BUILDDIR)/qwcl $(BUILDDIR)/qwcl.x11 $(BUILDDIR)/glqwcl $(BUILDDIR)/glqwcl.glx
+#TARGETS=$(BUILDDIR)/qwsv $(BUILDDIR)/qwcl $(BUILDDIR)/qwcl.x11 $(BUILDDIR)/glqwcl $(BUILDDIR)/glqwcl.glx
+TARGETS=$(BUILDDIR)/qwsv $(BUILDDIR)/glqwcl.glx
 endif
 
 build_debug:

@@ -1,5 +1,8 @@
 # Compiled source #
 ###################
+./QW/debug*/*
+./QW/release*/*
+
 *.com
 *.class
 *.dll

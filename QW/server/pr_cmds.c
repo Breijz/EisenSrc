@@ -1162,8 +1162,8 @@ void PF_aim (void)
 	int		i, j;
 	trace_t	tr;
 	float	dist, bestdist;
-	float	speed;
 	char	*noaim;
+	float speed;
 
 	ent = G_EDICT(OFS_PARM0);
 	speed = G_FLOAT(OFS_PARM1);
@@ -1300,9 +1300,7 @@ MESSAGE WRITING
 
 sizebuf_t *WriteDest (void)
 {
-	int		entnum;
 	int		dest;
-	edict_t	*ent;
 
 	dest = G_FLOAT(OFS_PARM0);
 	switch (dest)

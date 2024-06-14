@@ -185,7 +185,7 @@ void SV_DropClient (client_t *drop)
 	// add the disconnect
 	MSG_WriteByte (&drop->netchan.message, svc_disconnect);
 
-	if (drop->state == cs_spawned)
+	if (drop->state == cs_spawned) {
 		if (!drop->spectator)
 		{
 			// call the prog function for removing a client
@@ -200,11 +200,13 @@ void SV_DropClient (client_t *drop)
 			pr_global_struct->self = EDICT_TO_PROG(drop->edict);
 			PR_ExecuteProgram (SpectatorDisconnect);
 		}
+	}
 
-	if (drop->spectator)
+	if (drop->spectator) {
 		Con_Printf ("Spectator %s removed\n",drop->name);
-	else
+	} else {
 		Con_Printf ("Client %s removed\n",drop->name);
+	}
 
 	if (drop->download)
 	{
@@ -1510,15 +1512,18 @@ void SV_ExtractFromUserinfo (client_t *cl)
 				break;
 		}
 		if (i != MAX_CLIENTS) { // dup name
-			if (strlen(val) > sizeof(cl->name) - 1)
+			if (strlen(val) > sizeof(cl->name) - 1) {
 				val[sizeof(cl->name) - 4] = 0;
+			}
 			p = val;
 
-			if (val[0] == '(')
-				if (val[2] == ')')
+			if (val[0] == '(') {
+				if (val[2] == ')') {
 					p = val + 3;
-				else if (val[3] == ')')
+				} else if (val[3] == ')') {
 					p = val + 4;
+				}
+			}
 
 			sprintf(newname, "(%d)%-.40s", dupc++, p);
 			Info_SetValueForKey (cl->userinfo, "name", newname, MAX_INFO_STRING);

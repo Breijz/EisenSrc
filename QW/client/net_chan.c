@@ -332,7 +332,7 @@ qboolean Netchan_Process (netchan_t *chan)
 #ifdef SERVERONLY
 	int			qport;
 #endif
-	int i;
+
 
 	if (
 #ifndef SERVERONLY

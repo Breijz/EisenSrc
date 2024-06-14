@@ -137,8 +137,9 @@ void Sys_Printf (char *fmt, ...)
 	if (strlen(text) > sizeof(text))
 		Sys_Error("memory overwrite in Sys_Printf");
 
-    if (sys_nostdout.value)
-        return;
+    	if (sys_nostdout.value) {
+        	return;
+	}
 
 	for (p = (unsigned char *)text; *p; p++) {
 		*p &= 0x7f;

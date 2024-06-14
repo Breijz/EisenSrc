@@ -40,7 +40,7 @@ MESA_DIR=/usr/local/src/Mesa-3.0
 ## currently it is compiled in 32bit mode due to d_copy.s being written for 32bit systems.
 
 CC=gcc
-BASE_CFLAGS=-Wall -Dstricmp=strcasecmp -m32 -I$(CLIENT_DIR) -I$(SERVER_DIR)
+BASE_CFLAGS=-Wall -Dstricmp=strcasecmp -m64 -I$(CLIENT_DIR) -I$(SERVER_DIR)
 DEBUG_CFLAGS=$(BASE_CFLAGS) -g
 ifeq ($(ARCH),axp)
 RELEASE_CFLAGS=$(BASE_CFLAGS) -ffast-math -funroll-loops \
@@ -57,6 +57,8 @@ SVGALDFLAGS=-lvga
 XLDFLAGS=-L/usr/X11R6/lib -lX11 -lXext
 GL_SVGA_LDFLAGS=-L/usr/X11/lib -L/usr/local/src/Mesa-3.0/lib -lm -lMesaGL -lglide2x -lX11 -lXext -lvga
 GL_X11_LDFLAGS=-L/usr/X11/lib -L/usr/local/src/Mesa-3.0/lib -lm -lGL -lX11 -lXext
+#GL_GLFW_LDFLAGS=-lm -L/lib64/libglfw.so.3.4 -lGL
+GL_GLFW_LDFLAGS=-lm -lGL -lglfw
 
 DO_CC=$(CC) $(CFLAGS) -o $@ -c $<
 DO_O_CC=$(CC) -O $(CFLAGS) -o $@ -c $<
@@ -75,7 +77,7 @@ TARGETS=$(BUILDDIR)/qwsv
 #$(BUILDDIR)/qwcl.x11
 else
 #TARGETS=$(BUILDDIR)/qwsv $(BUILDDIR)/qwcl $(BUILDDIR)/qwcl.x11 $(BUILDDIR)/glqwcl $(BUILDDIR)/glqwcl.glx
-TARGETS=$(BUILDDIR)/qwsv $(BUILDDIR)/glqwcl.glx
+TARGETS=$(BUILDDIR)/qwsv $(BUILDDIR)/glqwcl.glfw 
 endif
 
 build_debug:
@@ -296,7 +298,6 @@ ifeq ($(ARCH),i386)
 	$(BUILDDIR)/client/snd_mixa.o \
 	$(BUILDDIR)/client/surf16.o \
 	$(BUILDDIR)/client/surf8.o \
-	$(BUILDDIR)/client/sys_dosa.o
 else
 	QWCL_AS_OBJS=
 endif
@@ -549,9 +550,6 @@ $(BUILDDIR)/client/surf16.o :         $(CLIENT_DIR)/surf16.s
 $(BUILDDIR)/client/surf8.o :          $(CLIENT_DIR)/surf8.s
 	$(DO_AS)
 
-$(BUILDDIR)/client/sys_dosa.o :       $(CLIENT_DIR)/sys_dosa.s
-	$(DO_AS)
-
 $(BUILDDIR)/client/vid_svgalib.o : $(CLIENT_DIR)/vid_svgalib.c
 	$(DO_O_CC)
 
@@ -612,16 +610,20 @@ GLQWCL_OBJS = \
 	\
 	$(BUILDDIR)/glclient/math.o \
 	$(BUILDDIR)/glclient/snd_mixa.o \
-	$(BUILDDIR)/glclient/sys_dosa.o
-	
+
+
 GLQWCL_SVGA_OBJS = $(BUILDDIR)/glclient/gl_vidlinux.o
 GLQWCL_X11_OBJS = $(BUILDDIR)/glclient/gl_vidlinuxglx.o
+GLQWCL_GLFW_OBJS = $(BUILDDIR)/glclient/gl_vidlinuxglfw.o
 
 $(BUILDDIR)/glqwcl : $(GLQWCL_OBJS) $(GLQWCL_SVGA_OBJS)
 	$(CC) $(CFLAGS) -o $@ $(GLQWCL_OBJS) $(GLQWCL_SVGA_OBJS) $(LDFLAGS) $(GL_SVGA_LDFLAGS)
 
 $(BUILDDIR)/glqwcl.glx : $(GLQWCL_OBJS) $(GLQWCL_X11_OBJS)
 	$(CC) $(CFLAGS) -o $@ $(GLQWCL_OBJS) $(GLQWCL_X11_OBJS) $(LDFLAGS) $(GL_X11_LDFLAGS)
+
+$(BUILDDIR)/glqwcl.glfw : $(GLQWCL_OBJS) $(GLQWCL_GLFW_OBJS)
+	$(CC) $(CFLAGS) -o $@ $(GLQWCL_OBJS) $(GLQWCL_GLFW_OBJS) $(LDFLAGS) $(GL_GLFW_LDFLAGS)
 
 $(BUILDDIR)/glclient/cl_demo.o :       $(CLIENT_DIR)/cl_demo.c
 	$(DO_GL_CC)
@@ -764,6 +766,9 @@ $(BUILDDIR)/glclient/gl_vidlinux.o :   $(CLIENT_DIR)/gl_vidlinux.c
 $(BUILDDIR)/glclient/gl_vidlinuxglx.o :   $(CLIENT_DIR)/gl_vidlinuxglx.c
 	$(DO_GL_CC)
 
+$(BUILDDIR)/glclient/gl_vidlinuxglfw.o :   $(CLIENT_DIR)/gl_vidlinuxglfw.c
+	$(DO_GL_CC)
+
 $(BUILDDIR)/glclient/gl_warp.o :       $(CLIENT_DIR)/gl_warp.c
 	$(DO_GL_CC)
 
@@ -771,9 +776,6 @@ $(BUILDDIR)/glclient/math.o :          $(CLIENT_DIR)/math.s
 	$(DO_GL_AS)
 
 $(BUILDDIR)/glclient/snd_mixa.o :      $(CLIENT_DIR)/snd_mixa.s
-	$(DO_GL_AS)
-
-$(BUILDDIR)/glclient/sys_dosa.o :      $(CLIENT_DIR)/sys_dosa.s
 	$(DO_GL_AS)
 
 #############################################################################

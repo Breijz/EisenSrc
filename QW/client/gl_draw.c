@@ -724,14 +724,14 @@ Only used for the player color selection menu
 */
 void Draw_TransPicTranslate (int x, int y, qpic_t *pic, byte *translation)
 {
-	int				v, u, c;
+	int				v, u;
 	unsigned		trans[64*64], *dest;
 	byte			*src;
 	int				p;
 
 	GL_Bind (translate_texture);
 
-	c = pic->width * pic->height;
+	//c = pic->width * pic->height;
 
 	dest = trans;
 	for (v=0 ; v<64 ; v++, dest += 64)
@@ -1171,7 +1171,7 @@ void GL_Upload8_EXT (byte *data, int width, int height,  qboolean mipmap, qboole
 {
 	int			i, s;
 	qboolean	noalpha;
-	int			samples;
+
     static	unsigned char scaled[1024*512];	// [512*256];
 	int			scaled_width, scaled_height;
 
@@ -1206,7 +1206,7 @@ void GL_Upload8_EXT (byte *data, int width, int height,  qboolean mipmap, qboole
 	if (scaled_width * scaled_height > sizeof(scaled))
 		Sys_Error ("GL_LoadTexture: too big");
 
-	samples = 1; // alpha ? gl_alpha_format : gl_solid_format;
+	//samples = 1; // alpha ? gl_alpha_format : gl_solid_format;
 
 	texels += scaled_width * scaled_height;
 

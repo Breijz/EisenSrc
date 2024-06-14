@@ -114,8 +114,9 @@ void Sys_Printf (char *fmt, ...)
 	if (strlen(text) > sizeof(text))
 		Sys_Error("memory overwrite in Sys_Printf");
 
-    if (nostdout)
-        return;
+    	if (nostdout) {
+		return;
+	}
 
 	for (p = (unsigned char *)text; *p; p++)
 		if ((*p > 128 || *p < 32) && *p != 10 && *p != 13 && *p != 9)
@@ -366,7 +367,9 @@ int main (int c, char **v)
 	parms.argc = com_argc;
 	parms.argv = com_argv;
 
-	parms.memsize = 16*1024*1024;
+	// NOTE : Increased Memory Size for QSB
+	//parms.memsize = 16*1024*1024;
+	parms.memsize = 32*1024*1024;
 
 	j = COM_CheckParm("-mem");
 	if (j)

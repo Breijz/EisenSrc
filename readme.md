@@ -1,4 +1,4 @@
-# EisenSrc QW Branch
+# EisenSrc 
 EisenSrc is a simple project aiming to improve the Quake Engine where possible. The eventual goal is for it to be compatible with the Goldsource Engine.
 
 ## Current Improvements
@@ -17,6 +17,10 @@ EisenSrc is a simple project aiming to improve the Quake Engine where possible. 
 - Increase Engine Limits to be the same as GoldSource Engine Limits OR QSB Engine Limits; whichever is higher.
 - Add WAD3, VTF, and VPK file support
 - Change out Q3 programming for DLL programming (potentially both?)
+- Update Networking Code
+    - Cross Platform Networking Library
+- Updating Code from C89/C99 to C++
+    - Similar code structure to GoldSource / Source
 
 ## Support
 If you find any issues in this project or wish to contribute (if so then thank you!) then you can DM me on discord via my tag 'breijz' or you can use Github's Issues feature.

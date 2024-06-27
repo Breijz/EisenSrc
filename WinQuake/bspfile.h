@@ -1,3 +1,6 @@
+#ifndef BSPFILE_H
+#define BSPFILE_H
+
 /*
 Copyright (C) 1996-1997 Id Software, Inc.
 
@@ -320,5 +323,7 @@ vec_t	FloatForKey (entity_t *ent, char *key);
 void 	GetVectorForKey (entity_t *ent, char *key, vec3_t vec);
 
 epair_t *ParseEpair (void);
+
+#endif
 
 #endif

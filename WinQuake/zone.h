@@ -1,3 +1,6 @@
+#ifndef ZONE_H
+#define ZONE_H
+
 /*
 Copyright (C) 1996-1997 Id Software, Inc.
 
@@ -129,3 +132,4 @@ void Cache_Report (void);
 
 
 
+#endif

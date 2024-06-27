@@ -1,3 +1,6 @@
+#ifndef NET_H
+#define NET_H
+
 /*
 Copyright (C) 1996-1997 Id Software, Inc.
 
@@ -335,3 +338,5 @@ extern	qboolean	slistSilent;
 extern	qboolean	slistLocal;
 
 void NET_Slist_f (void);
+
+#endif

@@ -1,3 +1,6 @@
+#ifndef CLIENT_H
+#define CLIENT_H
+
 /*
 Copyright (C) 1996-1997 Id Software, Inc.
 
@@ -373,3 +376,5 @@ void V_SetContentsColor (int contents);
 //
 void CL_InitTEnts (void);
 void CL_SignonReply (void);
+
+#endif

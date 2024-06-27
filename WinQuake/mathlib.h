@@ -1,3 +1,6 @@
+#ifndef MATHLIB_H
+#define MATHLIB_H
+
 /*
 Copyright (C) 1996-1997 Id Software, Inc.
 
@@ -70,6 +73,8 @@ void AngleVectors (vec3_t angles, vec3_t forward, vec3_t right, vec3_t up);
 int BoxOnPlaneSide (vec3_t emins, vec3_t emaxs, struct mplane_s *plane);
 float	anglemod(float a);
 
+void RotatePointAroundVector(vec3_t dst, const vec3_t dir, const vec3_t point, float degrees);
+
 
 
 #define BOX_ON_PLANE_SIDE(emins, emaxs, p)	\
@@ -87,3 +92,5 @@ float	anglemod(float a);
 	)										\
 	:										\
 		BoxOnPlaneSide( (emins), (emaxs), (p)))
+
+#endif

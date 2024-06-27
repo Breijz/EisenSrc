@@ -1,3 +1,6 @@
+#ifndef SERVER_H
+#define SERVER_H
+
 /*
 Copyright (C) 1996-1997 Id Software, Inc.
 
@@ -254,4 +257,6 @@ void SV_SaveSpawnparms ();
 void SV_SpawnServer (char *server, char *startspot);
 #else
 void SV_SpawnServer (char *server);
+#endif
+
 #endif

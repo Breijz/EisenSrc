@@ -395,7 +395,7 @@ while (1)
 	a = (eval_t *)&pr_globals[st->a];
 	b = (eval_t *)&pr_globals[st->b];
 	c = (eval_t *)&pr_globals[st->c];
-	
+
 	if (!--runaway)
 		PR_RunError ("runaway loop error");
 		

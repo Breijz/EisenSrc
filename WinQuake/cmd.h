@@ -1,3 +1,6 @@
+#ifndef CMD_H
+#define CMD_H
+
 /*
 Copyright (C) 1996-1997 Id Software, Inc.
 
@@ -119,3 +122,4 @@ void	Cmd_Print (char *text);
 // used by command functions to send output to either the graphics console or
 // passed as a print message to the client
 
+#endif

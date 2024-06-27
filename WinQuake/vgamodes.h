@@ -1,3 +1,6 @@
+#ifndef VGAMODES_H
+#define VGAMODES_H
+
 /*
 Copyright (C) 1996-1997 Id Software, Inc.
 
@@ -597,3 +600,4 @@ vmode_t	vgavidmodes[] = {
 },
 };
 
+#endif

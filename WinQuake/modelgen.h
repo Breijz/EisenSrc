@@ -1,3 +1,6 @@
+#ifndef MODELGEN_H
+#define MODELGEN_H
+
 /*
 Copyright (C) 1996-1997 Id Software, Inc.
 
@@ -132,3 +135,4 @@ typedef struct {
 #define IDPOLYHEADER	(('O'<<24)+('P'<<16)+('D'<<8)+'I')
 														// little-endian "IDPO"
 
+#endif

@@ -1,3 +1,6 @@
+#ifndef GLQUAKE_H
+#define GLQUAKE_H
+
 /*
 Copyright (C) 1996-1997 Id Software, Inc.
 
@@ -249,3 +252,5 @@ extern qboolean gl_mtexable;
 
 void GL_DisableMultitexture(void);
 void GL_EnableMultitexture(void);
+
+#endif

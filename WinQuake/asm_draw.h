@@ -1,3 +1,6 @@
+#ifndef ASM_DRAW_H
+#define ASM_DRAW_H
+
 /*
 Copyright (C) 1996-1997 Id Software, Inc.
 
@@ -149,3 +152,4 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 								// !!! d_polysa.s must be changed to match !!!
 #define mtri_shift			4
 
+#endif

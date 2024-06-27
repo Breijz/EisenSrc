@@ -1,3 +1,6 @@
+#ifndef NET_LOOP_H
+#define NET_LOOP_H
+
 /*
 Copyright (C) 1996-1997 Id Software, Inc.
 
@@ -31,3 +34,5 @@ qboolean	Loop_CanSendMessage (qsocket_t *sock);
 qboolean	Loop_CanSendUnreliableMessage (qsocket_t *sock);
 void		Loop_Close (qsocket_t *sock);
 void		Loop_Shutdown (void);
+
+#endif

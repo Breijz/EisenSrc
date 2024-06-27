@@ -1,3 +1,6 @@
+#ifndef NET_DGRM_H
+#define NET_DGRM_H
+
 /*
 Copyright (C) 1996-1997 Id Software, Inc.
 
@@ -32,3 +35,5 @@ qboolean	Datagram_CanSendMessage (qsocket_t *sock);
 qboolean	Datagram_CanSendUnreliableMessage (qsocket_t *sock);
 void		Datagram_Close (qsocket_t *sock);
 void		Datagram_Shutdown (void);
+
+#endif

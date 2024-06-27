@@ -1,3 +1,6 @@
+#ifndef GLQUAKE2_H
+#define GLQUAKE2_H
+
 /*
 Copyright (C) 1996-1997 Id Software, Inc.
 
@@ -207,3 +210,5 @@ extern	int		gl_alpha_format;
 
 void R_TranslatePlayerSkin (int playernum);
 void GL_Bind (int texnum);
+
+#endif

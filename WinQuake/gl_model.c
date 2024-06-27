@@ -40,6 +40,10 @@ int		mod_numknown;
 
 cvar_t gl_subdivide_size = {"gl_subdivide_size", "128", true};
 
+// TODO : Deal with header file bs
+void GL_SubdivideSurface(msurface_t *fa);
+void GL_MakeAliasModelDisplayLists(model_t *m, aliashdr_t *hdr);
+
 /*
 ===============
 Mod_Init

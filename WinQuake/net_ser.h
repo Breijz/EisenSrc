@@ -1,3 +1,6 @@
+#ifndef NET_SER_H
+#define NET_SER_H
+
 /*
 Copyright (C) 1996-1997 Id Software, Inc.
 
@@ -31,3 +34,5 @@ qboolean	Serial_CanSendMessage (qsocket_t *sock);
 qboolean	Serial_CanSendUnreliableMessage (qsocket_t *sock);
 void		Serial_Close (qsocket_t *sock);
 void		Serial_Shutdown (void);
+
+#endif

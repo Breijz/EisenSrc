@@ -1,3 +1,6 @@
+#ifndef PROTOCOL_H
+#define PROTOCOL_H
+
 /*
 Copyright (C) 1996-1997 Id Software, Inc.
 
@@ -164,4 +167,6 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #ifdef QUAKE2
 #define TE_IMPLOSION		14
 #define TE_RAILTRAIL		15
+#endif
+
 #endif

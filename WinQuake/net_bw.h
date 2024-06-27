@@ -1,3 +1,6 @@
+#ifndef NET_BW_H
+#define NET_BW_H
+
 /*
 Copyright (C) 1996-1997 Id Software, Inc.
 
@@ -37,3 +40,5 @@ int  BW_GetAddrFromName (char *name, struct qsockaddr *addr);
 int  BW_AddrCompare (struct qsockaddr *addr1, struct qsockaddr *addr2);
 int  BW_GetSocketPort (struct qsockaddr *addr);
 int  BW_SetSocketPort (struct qsockaddr *addr, int port);
+
+#endif

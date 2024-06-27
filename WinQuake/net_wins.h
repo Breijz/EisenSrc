@@ -1,3 +1,6 @@
+#ifndef NET_WINS_H
+#define NET_WINS_H
+
 /*
 Copyright (C) 1996-1997 Id Software, Inc.
 
@@ -37,3 +40,5 @@ int  WINS_GetAddrFromName (char *name, struct qsockaddr *addr);
 int  WINS_AddrCompare (struct qsockaddr *addr1, struct qsockaddr *addr2);
 int  WINS_GetSocketPort (struct qsockaddr *addr);
 int  WINS_SetSocketPort (struct qsockaddr *addr, int port);
+
+#endif

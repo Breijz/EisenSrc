@@ -1,3 +1,6 @@
+#ifndef PR_COMP_H
+#define PR_COMP_H
+
 /*
 Copyright (C) 1996-1997 Id Software, Inc.
 
@@ -178,3 +181,4 @@ typedef struct
 	int		entityfields;
 } dprograms_t;
 
+#endif

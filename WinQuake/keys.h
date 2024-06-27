@@ -1,3 +1,6 @@
+#ifndef KEYS_H
+#define KEYS_H
+
 /*
 Copyright (C) 1996-1997 Id Software, Inc.
 
@@ -131,3 +134,4 @@ void Key_WriteBindings (FILE *f);
 void Key_SetBinding (int keynum, char *binding);
 void Key_ClearStates (void);
 
+#endif KEYS_H

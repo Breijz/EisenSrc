@@ -181,6 +181,8 @@ byte		menuplyr_pixels[4096];
 int		pic_texels;
 int		pic_count;
 
+int GL_LoadPicTexture (qpic_t *pic);
+
 qpic_t *Draw_PicFromWad (char *name)
 {
 	qpic_t	*p;
@@ -1219,7 +1221,9 @@ static	unsigned	trans[640*480];		// FIXME, temporary
 		}
 	}
 
- 	if (VID_Is8bit() && !alpha && (data!=scrap_texels[0])) {
+	// TODO : VID_Is8Bit() deprecated?
+ 	//if (VID_Is8bit() && !alpha && (data!=scrap_texels[0])) {
+	if(!alpha && (data != scrap_texels[0])) {
  		GL_Upload8_EXT (data, width, height, mipmap, alpha);
  		return;
 	}

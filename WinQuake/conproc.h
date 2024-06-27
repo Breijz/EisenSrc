@@ -1,3 +1,6 @@
+#ifndef CONPROC_H
+#define CONPROC_H
+
 /*
 Copyright (C) 1996-1997 Id Software, Inc.
 
@@ -35,3 +38,4 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 void InitConProc (HANDLE hFile, HANDLE heventParent, HANDLE heventChild);
 void DeinitConProc (void);
 
+#endif CONPROC_H

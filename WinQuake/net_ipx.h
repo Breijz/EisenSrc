@@ -1,3 +1,6 @@
+#ifndef NET_IPX_H
+#define NET_IPX_H
+
 /*
 Copyright (C) 1996-1997 Id Software, Inc.
 
@@ -37,3 +40,5 @@ int  IPX_GetAddrFromName (char *name, struct qsockaddr *addr);
 int  IPX_AddrCompare (struct qsockaddr *addr1, struct qsockaddr *addr2);
 int  IPX_GetSocketPort (struct qsockaddr *addr);
 int  IPX_SetSocketPort (struct qsockaddr *addr, int port);
+
+#endif

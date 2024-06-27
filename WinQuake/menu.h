@@ -1,3 +1,6 @@
+#ifndef MENU_H
+#define MENU_H
+
 /*
 Copyright (C) 1996-1997 Id Software, Inc.
 
@@ -35,4 +38,4 @@ void M_Keydown (int key);
 void M_Draw (void);
 void M_ToggleMenu_f (void);
 
-
+#endif

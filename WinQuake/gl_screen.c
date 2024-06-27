@@ -22,6 +22,9 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include "quakedef.h"
 
+// TODO : Remove; exists for linking
+void GL_Set2D(void);
+
 /*
 
 background clear
@@ -103,7 +106,7 @@ int			scr_fullupdate;
 int			clearconsole;
 int			clearnotify;
 
-int			sb_lines;
+extern int			sb_lines;
 
 viddef_t	vid;				// global video state
 

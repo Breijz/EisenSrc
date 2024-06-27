@@ -25,16 +25,16 @@ ARCH=i386
 endif
 NOARCH=noarch
 
-MOUNT_DIR=/grog/Projects/WinQuake
-MASTER_DIR=/grog/Projects/QuakeMaster
+#MOUNT_DIR=/grog/Projects/WinQuake
+MOUNT_DIR=${PWD}
+#MASTER_DIR=/grog/Projects/QuakeMaster
 MESA_DIR=/usr/local/src/Mesa-2.6
-TDFXGL_DIR = /home/zoid/3dfxgl
+#TDFXGL_DIR = /home/zoid/3dfxgl
 
 BUILD_DEBUG_DIR=debug$(ARCH)$(GLIBC)
 BUILD_RELEASE_DIR=release$(ARCH)$(GLIBC)
 
-EGCS=/usr/local/egcs-1.1.2/bin/gcc
-CC=$(EGCS)
+CC=gcc
 
 BASE_CFLAGS=-Dstricmp=strcasecmp
 RELEASE_CFLAGS=$(BASE_CFLAGS) -g -mpentiumpro -O6 -ffast-math -funroll-loops \
@@ -48,6 +48,7 @@ XCFLAGS=-DX11
 MESAGLLDFLAGS=-L/usr/X11/lib -L/usr/local/lib -L$(MESA_DIR)/lib -lMesaGL -lglide2x -lX11 -lXext -ldl
 TDFXGLLDFLAGS=-L$(TDFXGL_DIR)/release$(ARCH)$(GLIBC) -l3dfxgl -lglide2x -ldl
 GLLDFLAGS=-L/usr/X11/lib -L/usr/local/lib -lGL -lX11 -lXext -ldl -lXxf86dga -lXxf86vm -lm
+GLFWLDFLAGS=-lm -lGL -lglfw
 GLCFLAGS=-DGLQUAKE -I$(MESA_DIR)/include -I/usr/include/glide
 
 DO_CC=$(CC) $(CFLAGS) -o $@ -c $<
@@ -64,12 +65,14 @@ DO_GL_AS=$(CC) $(CFLAGS) $(GLCFLAGS) -DELF -x assembler-with-cpp -o $@ -c $<
 # SETUP AND BUILD
 #############################################################################
 
-TARGETS=$(BUILDDIR)/bin/squake \
+#TARGETS=$(BUILDDIR)/bin/squake \
 	$(BUILDDIR)/bin/glquake \
 	$(BUILDDIR)/bin/glquake.glx \
 	$(BUILDDIR)/bin/glquake.3dfxgl \
 	$(BUILDDIR)/bin/quake.x11
 	# $(BUILDDIR)/bin/unixded
+
+TARGETS=$(BUILDDIR)/bin/glquake.glfw
 
 build_debug:
 	@-mkdir $(BUILD_DEBUG_DIR) \
@@ -188,7 +191,6 @@ SQUAKE_OBJS = \
 	$(BUILDDIR)/squake/worlda.o \
 	$(BUILDDIR)/squake/r_aclipa.o \
 	$(BUILDDIR)/squake/snd_mixa.o \
-	$(BUILDDIR)/squake/sys_dosa.o
 
 $(BUILDDIR)/bin/squake : $(SQUAKE_OBJS)
 	$(CC) $(CFLAGS) -o $@ $(SQUAKE_OBJS) $(SVGALDFLAGS) $(LDFLAGS)
@@ -464,9 +466,6 @@ $(BUILDDIR)/squake/r_aclipa.o : $(MOUNT_DIR)/r_aclipa.s
 $(BUILDDIR)/squake/snd_mixa.o : $(MOUNT_DIR)/snd_mixa.s
 	$(DO_AS)
 
-$(BUILDDIR)/squake/sys_dosa.o : $(MOUNT_DIR)/sys_dosa.s
-	$(DO_AS)
-
 #############################################################################
 # X11 Quake
 #############################################################################
@@ -561,7 +560,6 @@ X11_OBJS = \
 	$(BUILDDIR)/x11/worlda.o \
 	$(BUILDDIR)/x11/r_aclipa.o \
 	$(BUILDDIR)/x11/snd_mixa.o \
-	$(BUILDDIR)/x11/sys_dosa.o
 
 $(BUILDDIR)/bin/quake.x11 : $(X11_OBJS)
 	$(CC) $(CFLAGS) -o $@ $(X11_OBJS) $(XLDFLAGS) $(LDFLAGS)
@@ -837,9 +835,6 @@ $(BUILDDIR)/x11/r_aclipa.o : $(MOUNT_DIR)/r_aclipa.s
 $(BUILDDIR)/x11/snd_mixa.o : $(MOUNT_DIR)/snd_mixa.s
 	$(DO_AS)
 
-$(BUILDDIR)/x11/sys_dosa.o : $(MOUNT_DIR)/sys_dosa.s
-	$(DO_AS)
-
 #############################################################################
 # GLQuake
 #############################################################################
@@ -902,12 +897,13 @@ GLQUAKE_OBJS= \
 	\
 	$(BUILDDIR)/glquake/math.o \
 	$(BUILDDIR)/glquake/worlda.o \
-	$(BUILDDIR)/glquake/snd_mixa.o \
-	$(BUILDDIR)/glquake/sys_dosa.o
+	$(BUILDDIR)/glquake/snd_mixa.o
 
 GLSVGA_OBJS=$(BUILDDIR)/glquake/gl_vidlinux.o
 
 GLX_OBJS=$(BUILDDIR)/glquake/gl_vidlinuxglx.o
+
+GLFW_OBJS=$(BUILDDIR)/glquake/gl_vidlinuxglfw.o
 
 $(BUILDDIR)/bin/glquake : $(GLQUAKE_OBJS) $(GLSVGA_OBJS)
 	$(CC) $(CFLAGS) -o $@ $(GLQUAKE_OBJS) $(GLSVGA_OBJS) $(MESAGLLDFLAGS) $(SVGALDFLAGS) $(LDFLAGS)
@@ -917,6 +913,9 @@ $(BUILDDIR)/bin/glquake.glx : $(GLQUAKE_OBJS) $(GLX_OBJS)
 
 $(BUILDDIR)/bin/glquake.3dfxgl : $(GLQUAKE_OBJS) $(GLSVGA_OBJS)
 	$(CC) $(CFLAGS) -o $@ $(GLQUAKE_OBJS) $(GLSVGA_OBJS) $(TDFXGLLDFLAGS) $(SVGALDFLAGS) $(LDFLAGS)
+
+$(BUILDDIR)/bin/glquake.glfw : $(GLQUAKE_OBJS) $(GLFW_OBJS)
+	$(CC) $(CFLAGS) -o $@ $(GLQUAKE_OBJS) $(GLFW_OBJS) $(GLFWLDFLAGS) $(LDFLAGS)
 
 $(BUILDDIR)/glquake/cl_demo.o :      $(MOUNT_DIR)/cl_demo.c
 	$(DO_GL_CC)
@@ -985,6 +984,9 @@ $(BUILDDIR)/glquake/gl_vidlinux.o :  $(MOUNT_DIR)/gl_vidlinux.c
 	$(DO_GL_CC)
 
 $(BUILDDIR)/glquake/gl_vidlinuxglx.o :  $(MOUNT_DIR)/gl_vidlinuxglx.c
+	$(DO_GL_CC)
+
+$(BUILDDIR)/glquake/gl_vidlinuxglfw.o :  $(MOUNT_DIR)/gl_vidlinuxglfw.c
 	$(DO_GL_CC)
 
 $(BUILDDIR)/glquake/gl_warp.o :      $(MOUNT_DIR)/gl_warp.c
@@ -1087,9 +1089,6 @@ $(BUILDDIR)/glquake/worlda.o :       $(MOUNT_DIR)/worlda.s
 	$(DO_GL_AS)
 
 $(BUILDDIR)/glquake/snd_mixa.o :     $(MOUNT_DIR)/snd_mixa.s
-	$(DO_GL_AS)
-
-$(BUILDDIR)/glquake/sys_dosa.o :     $(MOUNT_DIR)/sys_dosa.s
 	$(DO_GL_AS)
 
 #############################################################################

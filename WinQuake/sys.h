@@ -1,3 +1,6 @@
+#ifndef SYS_H
+#define SYS_H
+
 /*
 Copyright (C) 1996-1997 Id Software, Inc.
 
@@ -69,3 +72,4 @@ void Sys_LowFPPrecision (void);
 void Sys_HighFPPrecision (void);
 void Sys_SetFPCW (void);
 
+#endif

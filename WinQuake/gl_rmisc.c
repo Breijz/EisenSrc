@@ -21,6 +21,15 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include "quakedef.h"
 
+#include "r_local.h"
+
+
+// TODO : Remove, temporary linking bs
+void R_InitParticles(void);
+qboolean VID_Is8bit(void);
+void GL_Upload8_EXT(byte *data, int width, int height, qboolean mipmap, qboolean alpha);
+void R_ClearParticles(void);
+void GL_BuildLightmaps(void);
 
 
 /*

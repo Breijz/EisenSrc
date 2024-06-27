@@ -1,3 +1,6 @@
+#ifndef SCREEN_H
+#define SCREEN_H
+
 /*
 Copyright (C) 1996-1997 Id Software, Inc.
 
@@ -55,3 +58,5 @@ extern	int			scr_copyeverything;
 extern qboolean		block_drawing;
 
 void SCR_UpdateWholeScreen (void);
+
+#endif

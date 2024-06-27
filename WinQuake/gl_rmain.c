@@ -21,6 +21,11 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include "quakedef.h"
 
+// TODO : Temporary Patch
+#include "gl_rsurf.h"
+int R_LightPoint(vec3_t p);
+// TODO : Remove
+
 entity_t	r_worldentity;
 
 qboolean	r_cache_thrash;		// compatability

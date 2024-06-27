@@ -1,3 +1,6 @@
+#ifndef PROGS_H
+#define PROGS_H
+
 /*
 Copyright (C) 1996-1997 Id Software, Inc.
 
@@ -132,3 +135,4 @@ void ED_PrintNum (int ent);
 
 eval_t *GetEdictFieldValue(edict_t *ed, char *field);
 
+#endif

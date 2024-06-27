@@ -1,3 +1,6 @@
+#ifndef CONSOLE_H
+#define CONSOLE_H
+
 /*
 Copyright (C) 1996-1997 Id Software, Inc.
 
@@ -44,3 +47,4 @@ void Con_ToggleConsole_f (void);
 
 void Con_NotifyBox (char *text);	// during startup for sound / cd warnings
 
+#endif

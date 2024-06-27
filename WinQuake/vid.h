@@ -1,3 +1,6 @@
+#ifndef VID_H
+#define VID_H
+
 /*
 Copyright (C) 1996-1997 Id Software, Inc.
 
@@ -83,3 +86,4 @@ int VID_SetMode (int modenum, unsigned char *palette);
 void VID_HandlePause (qboolean pause);
 // called only on Win32, when pause happens, so the mouse can be released
 
+#endif

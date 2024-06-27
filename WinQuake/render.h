@@ -1,3 +1,6 @@
+#ifndef RENDER_H
+#define RENDER_H
+
 /*
 Copyright (C) 1996-1997 Id Software, Inc.
 
@@ -156,3 +159,4 @@ void D_DeleteSurfaceCache (void);
 void D_InitCaches (void *buffer, int size);
 void R_SetVrect (vrect_t *pvrect, vrect_t *pvrectin, int lineadj);
 
+#endif

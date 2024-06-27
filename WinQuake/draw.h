@@ -1,3 +1,6 @@
+#ifndef DRAW_H
+#define DRAW_H
+
 /*
 Copyright (C) 1996-1997 Id Software, Inc.
 
@@ -38,3 +41,5 @@ void Draw_FadeScreen (void);
 void Draw_String (int x, int y, char *str);
 qpic_t *Draw_PicFromWad (char *name);
 qpic_t *Draw_CachePic (char *path);
+
+#endif

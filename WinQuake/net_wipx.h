@@ -1,3 +1,6 @@
+#ifndef NET_WIPX_H
+#define NET_WIPX_H
+
 /*
 Copyright (C) 1996-1997 Id Software, Inc.
 
@@ -37,3 +40,5 @@ int  WIPX_GetAddrFromName (char *name, struct qsockaddr *addr);
 int  WIPX_AddrCompare (struct qsockaddr *addr1, struct qsockaddr *addr2);
 int  WIPX_GetSocketPort (struct qsockaddr *addr);
 int  WIPX_SetSocketPort (struct qsockaddr *addr, int port);
+
+#endif

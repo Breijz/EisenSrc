@@ -1,3 +1,6 @@
+#ifndef D_IFACEA_H
+#define D_IFACEA_H
+
 /*
 Copyright (C) 1996-1997 Id Software, Inc.
 
@@ -96,3 +99,4 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #define atd_seamfixupX16	32
 #define atd_size			36
 
+#endif

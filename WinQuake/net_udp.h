@@ -1,3 +1,6 @@
+#ifndef NET_UDP_H
+#define NET_UDP_H
+
 /*
 Copyright (C) 1996-1997 Id Software, Inc.
 
@@ -37,3 +40,5 @@ int  UDP_GetAddrFromName (char *name, struct qsockaddr *addr);
 int  UDP_AddrCompare (struct qsockaddr *addr1, struct qsockaddr *addr2);
 int  UDP_GetSocketPort (struct qsockaddr *addr);
 int  UDP_SetSocketPort (struct qsockaddr *addr, int port);
+
+#endif

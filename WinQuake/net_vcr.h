@@ -1,3 +1,6 @@
+#ifndef NET_VCR_H
+#define NET_VCR_H
+
 /*
 Copyright (C) 1996-1997 Id Software, Inc.
 
@@ -35,3 +38,5 @@ int			VCR_SendMessage (qsocket_t *sock, sizebuf_t *data);
 qboolean	VCR_CanSendMessage (qsocket_t *sock);
 void		VCR_Close (qsocket_t *sock);
 void		VCR_Shutdown (void);
+
+#endif

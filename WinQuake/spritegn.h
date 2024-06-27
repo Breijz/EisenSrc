@@ -1,3 +1,6 @@
+#ifndef SPRITEGEN_H
+#define SPRITEGEN_H
+
 /*
 Copyright (C) 1996-1997 Id Software, Inc.
 
@@ -108,3 +111,4 @@ typedef struct {
 #define IDSPRITEHEADER	(('P'<<24)+('S'<<16)+('D'<<8)+'I')
 														// little-endian "IDSP"
 
+#endif

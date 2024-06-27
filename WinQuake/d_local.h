@@ -1,3 +1,6 @@
+#ifndef D_LOCAL_H
+#define D_LOCAL_H
+
 /*
 Copyright (C) 1996-1997 Id Software, Inc.
 
@@ -109,3 +112,4 @@ extern float	d_scalemip[3];
 
 extern void (*d_drawspans) (espan_t *pspan);
 
+#endif

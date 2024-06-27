@@ -21,7 +21,16 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include "quakedef.h"
 
-int			skytexturenum;
+#include "gl_rsurf.h"
+
+
+// TODO : Temporary; deals with linking issues
+void EmitWaterPolys(msurface_t *fa);
+void EmitSkyPolys(msurface_t *fa);
+void EmitBothSkyLayers(msurface_t *fa);
+// Remove Above
+
+extern int			skytexturenum;
 
 #ifndef GL_RGBA4
 #define	GL_RGBA4	0

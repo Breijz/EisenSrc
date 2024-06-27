@@ -1,8 +1,10 @@
-project('EisenSrc', 'c')
+project('EisenSrc', ['c', 'cpp'])
 
 QWSV_INC = include_directories('include/mp')
 QWCL_INC = include_directories('include/sp')
 QWCOMMON_INC = include_directories('include/common')
+
+UTIL_PAK_INC = include_directories('include/util')
 
 QWSV_SRC = files(
   'src/mp/pr_cmds.c',
@@ -81,6 +83,11 @@ QWCL_SRC = files(
   'src/sp/opengl/gl_warp.c',
   'src/sp/opengl/gl_vidlinuxglfw.c'
 )
+
+UTIL_PAK_SRC = files(
+  'src/util/pak/main.cpp',
+  'src/util/pak/packfile.cpp'
+)
 #'src/sp/math.s'
   #  'src/sp/snd_mixa.c'
 
@@ -91,3 +98,5 @@ QWCL_DEP = [m_dep, dependency('GL'), dependency('glfw3')]
 
 executable('qwcl', QWCL_SRC, include_directories: [QWCL_INC, QWCOMMON_INC], c_args: ['-DGLQUAKE', '-m64', '-g', '-ffast-math', '-funroll-loops', '-fomit-frame-pointer', '-fexpensive-optimizations', '-lm', '-lGL', '-lglfw'], dependencies: QWCL_DEP)
 executable('qwsv', QWSV_SRC, include_directories: [QWSV_INC, QWCOMMON_INC, QWCL_INC], c_args: ['-DSERVERONLY', '-m64', '-g', '-ffast-math', '-funroll-loops', '-fomit-frame-pointer', '-fexpensive-optimizations'], dependencies: m_dep)
+
+executable('pak', UTIL_PAK_SRC, include_directories: UTIL_PAK_INC)

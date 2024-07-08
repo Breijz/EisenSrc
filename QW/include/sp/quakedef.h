@@ -105,6 +105,8 @@ typedef struct
 
 #define MAX_NUM_ARGVS	50
 
+extern uint VAO, VBO, EBO;
+extern uint TextVBO, TextEBO;
 
 extern qboolean noclip_anglehack;
 

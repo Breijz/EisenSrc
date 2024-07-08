@@ -9,9 +9,10 @@ EisenSrc is a simple project aiming to improve the Quake Engine where possible. 
 ## Planned Improvements
 - Fix/Change the audio system to one based off of Miniaudio
     - Add DSP
-- Convert x86 ASM code to C99
-    - Remove Lookup tables (these were used for optimizing the game on old CPUs, which are no longer needed)
-- Update OpenGL code to OpenGL 3.3
+- ~~Convert x86 ASM code to C99~~
+    - ~~Remove Lookup tables (these were used for optimizing the game on old CPUs, which are no longer needed)~~
+    - It appears this is not needed as Id shipped the code in C for AMD processors of the era.
+- Update OpenGL code to OpenGL 4.1
     - Add RGB Lighting
     - Add Translucent Materials
 - Increase Engine Limits to be the same as GoldSource Engine Limits OR QSB Engine Limits; whichever is higher.
@@ -19,7 +20,10 @@ EisenSrc is a simple project aiming to improve the Quake Engine where possible. 
 - Change out Q3 programming for DLL programming (potentially both?)
 - Update Networking Code
     - Cross Platform Networking Library
-- Updating Code from C89/C99 to C++
+- Updating Code
+    - Convert to C++
+    - Tackle getting rid of the abundance of globals
+    - Get rid of legacy code (3DFX, SVGA, WGL, GLX, Win32, software rendering, etc
     - Similar code structure to GoldSource / Source
 
 ## Support

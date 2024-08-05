@@ -19,8 +19,11 @@ jobs:
       - name: Install Dependencies
         run: python -m pip install meson==${{ matrix.meson_version }} ninja
       - name: Configure Project
+        working_directory: ./QW
         run: meson setup build/
       - name: Run Tests
+        working_directory: ./QW
         run: meson test -C build/ -v
       - name: Compile Source
+        working_directory: ./QW
         run: ninja -C build

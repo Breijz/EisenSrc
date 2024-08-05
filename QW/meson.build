@@ -61,28 +61,43 @@ QWCL_SRC = files(
   'src/sp/r_part.c',
   'src/sp/sbar.c',
   'src/sp/skin.c',
-  'src/sp/sound/snd_dma.c',
-  'src/sp/sound/snd_mem.c',
-  'src/sp/sound/snd_mix.c',
   'src/sp/view.c',
   'src/sp/wad.c',
   'src/sp/zone.c',
   'src/sp/cd/cd_linux.c',
   'src/sp/system/sys_linux.c',
   'src/sp/sound/snd_linux.c',
-  'src/sp/opengl/gl_draw.c',
-  'src/sp/opengl/gl_mesh.c',
-  'src/sp/opengl/gl_model.c',
-  'src/sp/opengl/gl_ngraph.c',
-  'src/sp/opengl/gl_refrag.c',
-  'src/sp/opengl/gl_rlight.c',
-  'src/sp/opengl/gl_rmain.c',
-  'src/sp/opengl/gl_rmisc.c',
-  'src/sp/opengl/gl_rsurf.c',
-  'src/sp/opengl/gl_screen.c',
-  'src/sp/opengl/gl_warp.c',
-  'src/sp/opengl/gl_vidlinuxglfw.c'
 )
+
+
+if get_option('sound') == 'old'
+  SOUND_SRC = files(
+    'src/sp/sound/snd_dma.c',
+    'src/sp/sound/snd_mem.c',
+    'src/sp/sound/snd_mix.c'
+  )
+elif get_option('sound') == 'miniaudio'
+  error('Currently unimplemented!')
+endif
+
+if get_option('video') == 'opengl-1.1'
+  VIDEO_SRC = files(
+    'src/sp/opengl-1.1/gl_draw.c',
+    'src/sp/opengl-1.1/gl_mesh.c',
+    'src/sp/opengl-1.1/gl_model.c',
+    'src/sp/opengl-1.1/gl_ngraph.c',
+    'src/sp/opengl-1.1/gl_refrag.c',
+    'src/sp/opengl-1.1/gl_rlight.c',
+    'src/sp/opengl-1.1/gl_rmain.c',
+    'src/sp/opengl-1.1/gl_rmisc.c',
+    'src/sp/opengl-1.1/gl_rsurf.c',
+    'src/sp/opengl-1.1/gl_screen.c',
+    'src/sp/opengl-1.1/gl_warp.c',
+    'src/sp/opengl-1.1/gl_vidlinuxglfw.c'
+  )
+elif get_option('video') == 'opengl-4.1'
+  error('Currently unimplemented!')
+endif
 
 UTIL_PAK_SRC = files(
   'src/util/pak/main.cpp',
@@ -96,7 +111,7 @@ m_dep = cc.find_library('m', required: false)
 
 QWCL_DEP = [m_dep, dependency('GL'), dependency('glfw3')]
 
-executable('qwcl', QWCL_SRC, include_directories: [QWCL_INC, QWCOMMON_INC], c_args: ['-DGLQUAKE', '-m64', '-g', '-ffast-math', '-funroll-loops', '-fomit-frame-pointer', '-fexpensive-optimizations', '-lm', '-lGL', '-lglfw'], dependencies: QWCL_DEP)
+executable('qwcl', [QWCL_SRC, SOUND_SRC, VIDEO_SRC], include_directories: [QWCL_INC, QWCOMMON_INC], c_args: ['-DGLQUAKE', '-m64', '-g', '-ffast-math', '-funroll-loops', '-fomit-frame-pointer', '-fexpensive-optimizations', '-lm', '-lGL', '-lglfw'], dependencies: QWCL_DEP)
 executable('qwsv', QWSV_SRC, include_directories: [QWSV_INC, QWCOMMON_INC, QWCL_INC], c_args: ['-DSERVERONLY', '-m64', '-g', '-ffast-math', '-funroll-loops', '-fomit-frame-pointer', '-fexpensive-optimizations'], dependencies: m_dep)
 
 executable('pak', UTIL_PAK_SRC, include_directories: UTIL_PAK_INC)

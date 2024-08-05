@@ -1,0 +1,15 @@
+
+# video can be 'opengl-1.1' or 'opengl-4.1'
+#   opengl-1.1 - "The best name for it" this causes meson to use the OpenGL code
+#     that was shipped with QuakeWorld originially; It is not necessarily 
+#     OpenGL 1.1!
+#   opengl-4.1 - Rewritten code that uses OpenGL 4.1, If you use a older 
+#     videocard then it is possible that it wont work for you. OpenGL 4.1
+#     was chosen for OS X support.
+option('video', type: 'string', value: 'opengl-1.1')
+
+# audio can be 'miniaudio' or 'old'
+#   old - use the sound code that was used in Quake originially; 
+#     most likely non-functional on your system!
+#   miniaudio - contemporary sound system
+option('sound', type: 'string', value: 'old')
